@@ -5,6 +5,7 @@ require_relative "lib/enum"
 require_relative "lib/selector"
 require_relative "lib/sort"
 require_relative "lib/atom"
+require_relative "lib/rotate"
 
 class Collection
   def initialize *args
