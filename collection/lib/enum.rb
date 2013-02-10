@@ -14,7 +14,7 @@ class Collection
     dup.map!(&block)
   end
   def clone
-    Collection.new.tap{|t| @collection.each{|e| t << e} }
+    Collection.new.tap{|t| t << @collection }
   end
   def dup
     Collection.new.tap do |t|

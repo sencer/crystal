@@ -11,7 +11,7 @@ class Atom
   def z=(p) 
     @pos = Vector[x,y,p] 
   end
-  def has_cell?() !(@cell.nil?) end
+  def has_crystal?() !(@crystal.nil?) end
   def move! v, n = 1
     @pos += v.to_v * n
     self
@@ -22,13 +22,13 @@ class Atom
   end
   def dist other
     pos = other.is_a?(Atom) ? other.pos : other.to_v
-    has_cell? ? cell.dist(self, other):(@pos - pos).magnitude
+    has_crystal? ? crystal.dist(self, other):(@pos - pos).magnitude
   end
   def dup
     Atom.new(to_hash)
   end
   def to_hash
-    { :type => @type.name.to_sym, :name => @name, :pos => @pos, :fixed => @fixed, :cell => @cell }
+    { :type => @type.name.to_sym, :name => @name, :pos => @pos, :fixed => @fixed, :crystal => @crystal }
   end
   def to_s f = '%8.4f'
     ("%-6s" + "#{f} " * 3) % ([name] + pos.to_a) + (fixed.nil? ? "" : fixed.map{|v| v ? 0 : 1}.join(" "))

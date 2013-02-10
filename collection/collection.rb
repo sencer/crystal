@@ -8,6 +8,7 @@ require_relative "lib/atom"
 require_relative "lib/rotate"
 
 class Collection
+  attr_reader :crystal
   def initialize *args
     @collection = []
     @tol = 0
@@ -33,7 +34,7 @@ class Collection
     @collection.pop n
   end
   def [] i, j = nil
-    j.nil?? @collection[i] : @collection[i,j]
+    j.nil?? @collection[i] : Collection.new.tap{|t| t << @collection[i,j]}
   end
   def []= index, atom
     if atom.is_a?(Atom) 

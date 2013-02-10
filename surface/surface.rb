@@ -24,4 +24,10 @@ class Surface
     p = p.pos if p.is_a? Atom
     (p.to_v- @p).to_a * @normal / @normal.magnitude
   end
+  def rotate! d,o,a
+    @normal = @normal.rotate!(d.to_v,o.to_v,a)
+  end
+  def move! v
+    @p += v.to_v
+  end
 end

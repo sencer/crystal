@@ -15,7 +15,7 @@ class Collection
   def name= str
     @collection.each{|atom| atom.name = str}
   end
-  def cell= cell
-    @collection.each{|atom| atom.cell = cell}
+  def crystal= crystal
+    @collection.each{|atom| atom.crystal = crystal}
   end
 end
